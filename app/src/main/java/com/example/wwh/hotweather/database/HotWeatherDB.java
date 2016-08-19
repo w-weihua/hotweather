@@ -16,8 +16,8 @@ import java.util.List;
 
 public class HotWeatherDB {
 
-    private static final String DB_NAME = "hot_weather";    //数据库名字
-    private static final int DB_VERSION = 1;                //数据库版本
+    public static final String DB_NAME = "hot_weather";    //数据库名字
+    public static final int DB_VERSION = 1;                //数据库版本
     private SQLiteDatabase db;                                //真正的数据库
     private static HotWeatherDB hotWeatherDB;                //设置为静态方便访问
 
@@ -35,7 +35,7 @@ public class HotWeatherDB {
      *  同时进行枷锁，只允许
      *  产生一个数据库
      */
-    public synchronized HotWeatherDB getInstance(Context context){
+    public synchronized static HotWeatherDB getInstance(Context context){
         if(hotWeatherDB == null){
             hotWeatherDB = new HotWeatherDB(context);
         }
@@ -78,7 +78,6 @@ public class HotWeatherDB {
                 list.add(province);
             } while (cursor.moveToNext());
         }
-        cursor.close(); // 记住关掉Cursor，节省资源（书上没有关）
         return list;
     }
 
@@ -111,11 +110,10 @@ public class HotWeatherDB {
                 city.setId(cursor.getInt(cursor.getColumnIndex("id")));
                 city.setCityCode(cursor.getString(cursor.getColumnIndex("city_code")));
                 city.setCityName(cursor.getString(cursor.getColumnIndex("city_name")));
-                city.setProvinceId(cursor.getInt(cursor.getColumnIndex("province_id")));
+                city.setProvinceId(provinceId);
                 list.add(city);
             }while (cursor.moveToNext());
         }
-        cursor.close();
         return list;
     }
 
@@ -146,11 +144,10 @@ public class HotWeatherDB {
                 county.setId(cursor.getInt(cursor.getColumnIndex("id")));
                 county.setCountyCode(cursor.getString(cursor.getColumnIndex("county_code")));
                 county.setCountyName(cursor.getString(cursor.getColumnIndex("county_name")));
-                county.setCityId(cursor.getInt(cursor.getColumnIndex("city_id")));
+                county.setCityId(cityId);
                 list.add(county);
             }while (cursor.moveToNext());
         }
-        cursor.close();
         return list;
     }
 

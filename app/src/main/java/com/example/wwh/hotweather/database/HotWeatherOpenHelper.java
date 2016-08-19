@@ -25,27 +25,24 @@ public class HotWeatherOpenHelper extends SQLiteOpenHelper {
     * */
 
     // province 建表语句
-    public static final String CREATE_PROVINCE = "create table Province(" +
-            "id integer primary key autoincrement," +
-            "province_name text," +
-            "province_code text" +
-            ")";
+    public static final String CREATE_PROVINCE = "create table Province ("
+            + "id integer primary key autoincrement, "
+            + "province_name text, "
+            + "province_code text)";
 
     // city  建表语句
-    public static final String CREATE_CITY = "create table City(" +
-            "id integer primary key autoincrement," +
-            "city_name text," +
-            "city_code text," +
-            "province_id integer" +
-            ")";
+    public static final String CREATE_CITY = "create table City ("
+            + "id integer primary key autoincrement, "
+            + "city_name text, "
+            + "city_code text, "
+            + "province_id integer)";
 
     // county  建表语句
-    public static final String CREATE_COUNTY = "create table County(" +
-            "id integer primary key autoincrement," +
-            "county_name text," +
-            "county_code text," +
-            "city_id integer" +
-            ")";
+    public static final String CREATE_COUNTY = "create table County ("
+            + "id integer primary key autoincrement, "
+            + "county_name text, "
+            + "county_code text, "
+            + "city_id integer)";
 
     // 必须重写的构造方法
     public HotWeatherOpenHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
