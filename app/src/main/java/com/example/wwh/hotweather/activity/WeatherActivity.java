@@ -17,6 +17,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.wwh.hotweather.R;
+import com.example.wwh.hotweather.service.AutoUpdateService;
 import com.example.wwh.hotweather.util.HttpCallbackListener;
 import com.example.wwh.hotweather.util.HttpUtil;
 import com.example.wwh.hotweather.util.Utility;
@@ -162,6 +163,8 @@ public class WeatherActivity extends Activity implements View.OnClickListener {
         //设置控件可见
         weatherInfoLayout.setVisibility(View.VISIBLE);
         textViewCityName.setVisibility(View.VISIBLE);
+        Intent intent = new Intent(this, AutoUpdateService.class);
+        startService(intent);
     }
 
 }
