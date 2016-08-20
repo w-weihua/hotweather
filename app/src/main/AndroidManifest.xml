@@ -21,5 +21,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="com.example.wwh.hotweather.activity.WeatherActivity">
+        </activity>
     </application>
 </manifest>
